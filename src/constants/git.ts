@@ -1,1 +1,1 @@
-export const GIT_COMMIT_ID = "8eafc0d";
+export const GIT_COMMIT_ID = "50e54db";

@@ -16,8 +16,31 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
+  desc "Build and upload to TestFlight"
+  lane :beta do
+    # Commit ID dosyasını oluştur
+    sh("cd ../.. && npx tsx scripts/writeGit.ts")
+
+    increment_build_number(xcodeproj: "fastlanetest.xcodeproj")
+
+    # Xcode projesini build et
+    build_app(
+  workspace: "fastlanetest.xcworkspace",
+  scheme: "fastlanetest",
+  export_method: "app-store",
+  export_options: {
+    signingStyle: "automatic",
+    teamID: "U79B363V7Y",
+    provisioningProfiles: {
+      "com.onatkilinc.fastlanetest" => "match AppStore com.onatkilinc.fastlanetest"
+    },
+    compileBitcode: false,
+    manageAppVersionAndBuildNumber: true
+  }
+)
+
+    # TestFlight'a yükle
+    upload_to_testflight
   end
 end
+
