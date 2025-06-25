@@ -32,6 +32,10 @@
         "projectId": "ccbefd96-98e0-43ff-b282-b168acaf085a"
       }
     },
-    "owner": "onatkilinc"
+    "owner": "onatkilinc",
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/ccbefd96-98e0-43ff-b282-b168acaf085a"
+    }
   }
 }

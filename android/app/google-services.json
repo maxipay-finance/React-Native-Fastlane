@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "750121230858",
+    "project_id": "dev-maxipay-8d5ee",
+    "storage_bucket": "dev-maxipay-8d5ee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750121230858:android:e087397e20bd0c5b97f5f3",
+        "android_client_info": {
+          "package_name": "com.onatkilinc.fastlanetest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPtuAfrZD2R_e4S5ROzmjDt4PRd5X1QJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

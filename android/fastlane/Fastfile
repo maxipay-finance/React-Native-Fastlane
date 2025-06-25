@@ -27,8 +27,12 @@ platform :android do
     # APK yolunu ayarla
     apk_path = "../app/build/outputs/apk/release/app-release.apk"
 
-    # Dosyayı transfer.sh ile yükle
-    upload_url = sh("curl --upload-file #{apk_path} https://transfer.sh/app-release.apk").strip
+    begin
+      upload_output = sh("curl -s -F 'file=@#{apk_path}' https://file.io").strip
+      upload_url = JSON.parse(upload_output)["link"]
+    rescue JSON::ParserError => e
+      UI.user_error!("❌ Dosya yüklenemedi. Gelen çıktı: #{upload_output}")
+    end
 
     # Linki mail ile gönder (eğer mutt kuruluysa)
     sh("echo 'Yeni test build: #{upload_url} \nCommit: #{commit_id}' | mutt -s 'Android Test Build Link' -- onat.kilinc@orema.dev")

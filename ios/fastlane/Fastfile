@@ -29,18 +29,17 @@ platform :ios do
   scheme: "fastlanetest",
   export_method: "app-store",
   export_options: {
-    signingStyle: "automatic",
-    teamID: "U79B363V7Y",
+    signingStyle: "manuel",
     provisioningProfiles: {
-      "com.onatkilinc.fastlanetest" => "match AppStore com.onatkilinc.fastlanetest"
+      "com.onatkilinc.fastlanetest" => "FastlaneTest"
     },
-    compileBitcode: false,
-    manageAppVersionAndBuildNumber: true
   }
 )
 
     # TestFlight'a yükle
-    upload_to_testflight
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true,
+    )
   end
 end
 
